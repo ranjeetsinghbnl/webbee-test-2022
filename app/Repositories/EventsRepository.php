@@ -4,8 +4,7 @@
 namespace App\Repositories;
 use App\Models\Event;
 use App\Http\Resources\EventsWithWorkshopsCollection;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+use App\Http\Resources\EventCollection;
 
 /***
  * Note:
@@ -16,7 +15,17 @@ use Illuminate\Support\Facades\DB;
  * - use SQL join to get all the records in one sql(I avoid that to use Laravel schematics)
  */
 class EventsRepository
-{
+{ 
+
+  /**
+   * function
+   * @name Events
+   * @description Get all the events
+   * @return Event Object
+   */
+  public function Events() {
+    return new EventCollection(Event::get());
+  }
   
   /**
    * function

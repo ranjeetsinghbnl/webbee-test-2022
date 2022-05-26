@@ -3,13 +3,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Date;
-
 use App\Repositories\EventsRepository;
 class EventsController extends BaseController
 {
@@ -28,6 +22,14 @@ class EventsController extends BaseController
     ) {
         $this->eventsRepo = $eventsRepo;
     }
+
+    /**
+     * return all events
+     */
+    public function getEvents(){
+      return response()->json($this->eventsRepo->Events());
+    }
+
 
     /*
      Requirements:
@@ -114,11 +116,8 @@ class EventsController extends BaseController
     ]
      */
 
-    /**
-     * function
-     * @name getEventsWithWorkshops
-     * Get all the events and there workshops
-     * return json
+     /**
+     * return all events and there workshops
      */
     public function getEventsWithWorkshops() {
       return response()->json($this->eventsRepo->EventsWithWorkshops());
@@ -199,6 +198,9 @@ class EventsController extends BaseController
     ```
      */
 
+     /**
+     * return all events and there workshops that are going to happen in future
+     */
     public function getFutureEventsWithWorkshops() {
       return response()->json($this->eventsRepo->getFutureEventsWithWorkshops());
     }
