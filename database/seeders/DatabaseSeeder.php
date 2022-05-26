@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    { 
+
+        // Update the seeder 
+        // to consider 2022 instead of 2021 for workshops, for integration testing
         DB::transaction(function($table) {
             $lcon1 = Event::create([
                 'name' => 'Laravel convention 2020'
@@ -34,15 +37,15 @@ class DatabaseSeeder extends Seeder
             ]);
 
             Workshop::create([
-                'start' => '2021/10/21 10:00',
-                'end' => '2021/10/21 18:00',
+                'start' => '2022/10/21 10:00',
+                'end' => '2022/10/21 18:00',
                 'name' => 'The new Eloquent - load more with less',
                 'event_id' => $lcon2->id
             ]);
 
             Workshop::create([
-                'start' => '2021/11/21 09:00',
-                'end' => '2021/11/21 17:00',
+                'start' => '2022/11/21 09:00',
+                'end' => '2022/11/21 17:00',
                 'name' => 'AutoEx - handles exceptions 100% automatic',
                 'event_id' => $lcon2->id
             ]);
@@ -52,15 +55,15 @@ class DatabaseSeeder extends Seeder
             ]);
 
             Workshop::create([
-                'start' => '2021/08/21 10:00',
-                'end' => '2021/08/21 18:00',
+                'start' => '2022/08/21 10:00',
+                'end' => '2022/08/21 18:00',
                 'name' => '#NoClass pure functional programming',
                 'event_id' => $rcon->id
             ]);
 
             Workshop::create([
-                'start' => '2021/08/21 09:00',
-                'end' => '2021/08/21 17:00',
+                'start' => '2022/08/21 09:00',
+                'end' => '2022/08/21 17:00',
                 'name' => 'Navigating the function jungle',
                 'event_id' => $rcon->id
             ]);
