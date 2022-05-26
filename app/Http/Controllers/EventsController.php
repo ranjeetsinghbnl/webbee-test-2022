@@ -1,4 +1,5 @@
 <?php
+// EventsController
 
 namespace App\Http\Controllers;
 
@@ -9,8 +10,25 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Date;
 
+use App\Repositories\EventsRepository;
 class EventsController extends BaseController
 {
+
+    /**
+     * @var $eventsRepo
+     */
+    private $eventsRepo;
+
+    /**
+     * EventsController Constructor
+     * @param EventsController $eventsRepo
+     */
+    public function __construct(
+      EventsRepository $eventsRepo
+    ) {
+        $this->eventsRepo = $eventsRepo;
+    }
+
     /*
      Requirements:
     - maximum 2 sql queries
@@ -96,8 +114,14 @@ class EventsController extends BaseController
     ]
      */
 
+    /**
+     * function
+     * @name getEventsWithWorkshops
+     * Get all the events and there workshops
+     * return json
+     */
     public function getEventsWithWorkshops() {
-        throw new \Exception('implement in coding task 1');
+      return response()->json($this->eventsRepo->EventsWithWorkshops());
     }
 
 
