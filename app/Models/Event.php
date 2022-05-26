@@ -7,4 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+  /**
+   * Get the workshop for the event post.
+   */
+  public function workshops()
+  {
+      return $this->hasMany(Workshop::class);
+  }
 }
